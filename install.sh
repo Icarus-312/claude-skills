@@ -33,8 +33,14 @@ for skill_path in "${SRC_SKILLS}"/*/; do
   dest="${SKILLS_DIR}/${name}"
 
   if [ -e "${dest}" ]; then
-    printf "Skill '%s' already exists. [o]verwrite / [s]kip / [b]ackup? " "${name}" > /dev/tty
-    read -r choice < /dev/tty
+    if [ -r /dev/tty ]; then
+      printf "Skill '%s' already exists. [o]verwrite / [s]kip / [b]ackup? " "${name}" > /dev/tty
+      read -r choice < /dev/tty
+    else
+      # No terminal attached (e.g. some piped shells): back up instead of clobbering.
+      choice="b"
+      echo "Skill '${name}' already exists; no terminal for a prompt — backing up."
+    fi
     case "${choice}" in
       o|O)
         rm -rf "${dest}"
