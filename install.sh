@@ -33,11 +33,13 @@ for skill_path in "${SRC_SKILLS}"/*/; do
   dest="${SKILLS_DIR}/${name}"
 
   if [ -e "${dest}" ]; then
-    if [ -r /dev/tty ]; then
-      printf "Skill '%s' already exists. [o]verwrite / [s]kip / [b]ackup? " "${name}" > /dev/tty
-      read -r choice < /dev/tty
+    # Probe whether a real terminal is actually usable (curl|bash has no stdin tty).
+    if { exec 3<>/dev/tty; } 2>/dev/null; then
+      printf "Skill '%s' already exists. [o]verwrite / [s]kip / [b]ackup? " "${name}" >&3
+      read -r choice <&3
+      exec 3>&-
     else
-      # No terminal attached (e.g. some piped shells): back up instead of clobbering.
+      # No terminal attached: back up instead of clobbering.
       choice="b"
       echo "Skill '${name}' already exists; no terminal for a prompt — backing up."
     fi
