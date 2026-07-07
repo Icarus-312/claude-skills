@@ -5,7 +5,7 @@ A small, forkable set of Claude Code skills for managing project state — write
 ## Quick install
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/claude-skills/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/Icarus-312/claude-skills/main/install.sh | bash
 ```
 
 Installs each skill into `~/.claude/skills/`. If a skill already exists it asks: overwrite / skip / backup.
@@ -13,7 +13,7 @@ Installs each skill into `~/.claude/skills/`. If a skill already exists it asks:
 ## Manual install
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/claude-skills.git
+git clone https://github.com/Icarus-312/claude-skills.git
 cp -R claude-skills/skills/* ~/.claude/skills/
 ```
 

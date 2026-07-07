@@ -2,9 +2,9 @@
 set -euo pipefail
 
 # Installs a curated set of Claude Code skills into ~/.claude/skills/
-# Usage: curl -sSL https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/claude-skills/main/install.sh | bash
+# Usage: curl -sSL https://raw.githubusercontent.com/Icarus-312/claude-skills/main/install.sh | bash
 
-REPO="YOUR_GITHUB_USERNAME/claude-skills"
+REPO="Icarus-312/claude-skills"
 BRANCH="main"
 SKILLS_DIR="${HOME}/.claude/skills"
 TARBALL_URL="https://codeload.github.com/${REPO}/tar.gz/refs/heads/${BRANCH}"
