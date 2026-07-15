@@ -1,0 +1,19 @@
+# Per-user config and data — never commit
+config.yaml
+.env
+.env.*
+*.key
+*.pem
+
+# screenwatch: real buckets leak your apps/domains; runtime data is private
+skills/*/categories.yaml
+skills/screenwatch/days/
+skills/screenwatch/notes/
+skills/screenwatch/observations.md
+skills/screenwatch/dashboard.html
+
+# tooling junk
+__pycache__/
+*.pyc
+*.log
+.DS_Store

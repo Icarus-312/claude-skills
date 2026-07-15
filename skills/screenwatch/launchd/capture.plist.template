@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Screenwatch capture daemon. install.sh substitutes __HOME__ and __LABEL__
+     and installs this to ~/Library/LaunchAgents/. Do not edit the installed
+     copy by hand; re-run install.sh instead. -->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>__LABEL__</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>__HOME__/Applications/Screenwatch.app/Contents/MacOS/screenwatch</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardErrorPath</key>
+    <string>__HOME__/screenwatch/daemon.log</string>
+    <key>StandardOutPath</key>
+    <string>__HOME__/screenwatch/daemon.log</string>
+</dict>
+</plist>

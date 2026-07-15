@@ -1,0 +1,82 @@
+# Screenwatch focus buckets — EXAMPLE. Copy to categories.yaml and edit.
+#
+# Ordered rules, FIRST MATCH WINS. The dashboard rebuilds from this file.
+#
+# A rule matches a tick when every key present in the rule matches:
+#   app:    frontmost app name              (exact, case-insensitive)
+#   domain: url host, e.g. www.youtube.com  ('*' wildcard allowed)
+#   title:  substring of the window title   (case-insensitive)
+#
+# A rule with both `domain` and `title` requires BOTH — that is how the two
+# YouTube rules below split learning from leisure: a video whose title mentions
+# one of the listed keywords is Learning, everything else on YouTube falls
+# through to the broad Leisure rule. Order is load-bearing; the narrow rule MUST
+# sit above the broad one.
+#
+# Anything unmatched lands in "Unsorted" and is shown explicitly on the
+# dashboard, so misclassified time can never hide.
+#
+# These are illustrative categories. Replace the domains and app names with your
+# own — this file ships with placeholders, not anyone's real workflow.
+
+buckets:
+  - bucket: Work
+    app: [Slack, zoom.us, Notion, Linear, Superhuman]
+
+  - bucket: Work
+    domain:
+      - mail.google.com
+      - calendar.google.com
+      - "*.atlassian.net"
+      - app.notion.com
+
+  - bucket: Building
+    app: [ghostty, Terminal, iTerm2, Code, Cursor, Xcode, Obsidian, Docker Desktop, Finder]
+
+  - bucket: Building
+    domain:
+      - "localhost:*"
+      - "127.0.0.1:*"
+      - github.com
+      - console.anthropic.com
+      - claude.ai
+      - vercel.com
+      - "*.vercel.app"
+
+  # --- Learning: narrow rules first ---
+  - bucket: Learning
+    domain: [www.perplexity.ai, docs.python.org, developer.mozilla.org]
+
+  - bucket: Learning
+    domain: [www.youtube.com]
+    title:
+      - tutorial
+      - docker
+      - python
+      - " ai "
+      - llm
+      - homelab
+
+  # --- Leisure: broad YouTube fallthrough MUST stay below the Learning rule ---
+  - bucket: Leisure
+    domain: [www.youtube.com]
+
+  - bucket: Leisure
+    domain:
+      - www.reddit.com
+      - www.netflix.com
+      - www.amazon.com
+      - x.com
+      - twitter.com
+
+  - bucket: Admin
+    domain:
+      - dashboard.stripe.com
+      - drive.google.com
+      - docs.google.com
+
+  - bucket: Admin
+    app: [System Settings, Mail, Messages, Music]
+
+# Colors are assigned in build-dashboard.py; bucket order here also sets
+# legend/stack order there.

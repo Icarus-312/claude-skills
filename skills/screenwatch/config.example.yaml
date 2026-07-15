@@ -1,0 +1,18 @@
+# Screenwatch config — copy to ~/screenwatch/config.yaml and edit.
+# Everything here has a working default; the file is optional.
+
+# Where the /screenwatch optimize command logs its recommendations. Default is a
+# plain local markdown file. Point it at an Obsidian vault note if you keep one,
+# e.g. "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/<Vault>/Screenwatch Recommendations.md"
+recommendations_note: ~/screenwatch/recommendations.md
+
+# The following are read from the environment, not this file, but are listed here
+# so you know they exist. Set them in the launchd plist or your shell:
+#
+#   SCREENWATCH_BASE   base dir for all data/scripts   (default: ~/screenwatch)
+#   SCREENWATCH_HOST   dashboard bind address          (default: 127.0.0.1)
+#                      set to a tailnet/LAN IP to reach it from other devices —
+#                      the dashboard has NO auth, so only do this on a trusted
+#                      network you control.
+#   SCREENWATCH_PORT   dashboard port                  (default: 8484)
+#   CLAUDE_BIN         path to the claude CLI          (default: auto-detected)

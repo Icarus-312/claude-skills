@@ -1,0 +1,2 @@
+# aggregate.py reads categories.yaml. Everything else is Python stdlib.
+PyYAML==6.0.2

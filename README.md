@@ -23,6 +23,7 @@ Then restart Claude Code (or run `/help`).
 
 - **handoff** — writes/updates a project's `_Project-State/<Project>.md` file (frontmatter + `## Resume Here` block + pointers) so the work can be picked back up instantly.
 - **resume** — reads that state file in a fixed lookup order and drops you straight onto the next physical action, no searching.
+- **screenwatch** — a local, on-device macOS time tracker. A background daemon samples your frontmost app, window title, and browser URL every ~5s (plus a compressed screenshot on context change); the skill turns that archive into daily activity notes, a recurring-inefficiency ledger, and a focus dashboard — bucketed by *domain*, not app name. Nothing leaves your machine. Needs its own setup (compiles a capture app, installs launchd jobs), so install it with its wizard rather than the plain copy above: `cd skills/screenwatch && ./install.sh`. See [skills/screenwatch/README.md](skills/screenwatch/README.md) for the full data-access disclosure.
 
 They pair: `handoff` writes, `resume` reads. Both use a shared `_Project-State/` folder.
 
